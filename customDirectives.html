@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+	<section ng-controller="ctrl">
+        <p><my-dir></my-dir></p>
+        <p my-dir title="someInformation" data-val="drop"></p>
+        <p class="my-dir"></p>
+        
+	</section>
+	<!-- element, attribute, class, comment -->
+<script type="text/javascript">
+	var app = angular.module('myApp', []);
+
+	app.directive("myDir", function(){
+		return {
+			restrict:'EA',
+			// template:"<h1> {{ val }} </h1>"
+			templateUrl:"htmlpage.html",
+            link:function(scope,ele,attr){
+//                console.log(ele.parent().children().find('my-dir').children().find('div').css({ backgroundColor:"pink"}));
+                ele.css({
+                    backgroundColor:"lime"
+                })
+                scope.name = "Demo Name" ;
+                
+                ele.on('click', function(){
+                   	/*console.log(attr.val);*/
+                    
+                });
+                
+//                console.log(angular.element(ele)[0].innerHTML)
+            }
+
+		}		
+	});
+
+	app.controller('ctrl', function($scope){
+		$scope.val = "shiva";	
+	});
+
+</script>
+</body>
+</html>

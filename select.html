@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+
+<div ng-controller="ctrl">
+	
+<select ng-model="demo">
+	<option ng-repeat="a in arr">{{ a }}</option>
+</select>
+
+<select ng-model='demo1' ng-options='a for a in arr'> {{ a }} </select>
+<h1>{{ demo1  }}</h1>
+
+
+<ul ng-switch='demo1'>
+	<li ng-switch-when="one">
+		<page></page>
+		<h2> This is One...</h2>
+	</li>
+	<li ng-switch-when="two">
+		<h2> This is Two...</h2>
+	</li>
+	<li ng-switch-when="three">
+		<h2> This is Three...</h2>
+	</li>
+	<li ng-switch-default>
+		<h2> This is Defualt...</h2>
+	</li>
+</ul>
+
+	
+</div>
+
+<script type="text/javascript">
+	var app = angular.module("myApp",[]);
+
+
+	app.directive('page', function(){
+		return{
+			templateUrl:"1.html"
+		}
+	})
+
+	app.controller('ctrl', function($scope){
+		$scope.arr = ['one', 'two', 'three'];
+	});
+</script>
+</body>
+</html>

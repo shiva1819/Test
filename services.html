@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    </head>
+    <body ng-app="myapp">
+            
+        <div ng-controller="ctrl">
+        
+            
+            <input type="number" ng-model="one">
+            <input type="text" ng-model="two">
+            
+            <button ng-click="demo()">demo</button>
+            {{ result }} <br />
+            
+            The Result is : {{ square }}
+            
+        </div>
+        <script>
+            var app = angular.module('myapp', []);
+            
+            //. service, factory.
+            
+            app.service('sum', function(){
+                this.add = function(a,b){
+                    return (a-0) + (b-0);
+                }
+                
+                this.sub = function(){
+                    
+                }
+                
+                this.otherSer = function($interval,cb,sec){
+                    $interval(cb,sec);
+                }
+            });
+            
+            
+            
+            
+            app.factory('square', function(){
+                var obj = {};
+                    
+                    obj.mul = function(a){
+                        return a*a;
+                    }
+                    
+                    obj.mul11 = function(a){
+                        return a*a;
+                    }
+                    
+                    obj.mul22 = function(a){
+                        return a*a;
+                    }
+                    
+                    return obj;
+            });
+            
+            
+            
+            
+            app.controller('ctrl', function($scope,$interval, sum, $log, square){
+                $log.info();
+                
+                
+                    
+                $scope.demo =  function(){
+                    $scope.result = sum.add($scope.one,$scope.two);
+                        
+                    $scope.square = square.mul($scope.one);
+                    
+                    sum.otherSer(function(){
+                        alert("One..")
+                    }, 1000);
+                    
+                    
+                    
+                    
+//                $interval(function(){
+//                    alert();
+//                },1000);
+                    }
+            });
+        </script>
+    </body>
+</html>

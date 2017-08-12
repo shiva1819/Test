@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+
+
+	<div ng-controller="myCtrl">
+		{{ name | uppercase }} <br>
+		{{ contact | number:"2" }} <br>
+		{{ sal | currency:"&#8377;" }} <br>
+		{{ email | lowercase }}
+		{{ DOB | date:"dd/mm/yyyy" }}
+
+		<img ng-src="{{ rs }}">
+		<a ng-href="{{ code }}"> click </a>
+
+		
+	</div>
+
+
+	<script type="text/javascript">
+
+	/* orderBy, filter, customFilters */
+
+	/* directives */
+		var app = angular.module('myApp',[]);
+
+		app.controller('myCtrl', ["$scope","$log",function($scope, $log){
+			$scope.name = 'shiva';
+			$scope.contact = 9021212312;
+			$scope.sal = 20000;
+			$scope.email = 'AS.PRASAD@GMAIL.COM';
+			$scope.rs = "rs.png";
+			$scope.code ="https://codepen.io/pen?editors=0010";
+            $log.info($scope.code);
+		}]);
+
+	</script>
+</body>
+</html>
